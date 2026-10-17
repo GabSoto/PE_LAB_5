@@ -16,6 +16,7 @@ export function CategoryFilterChips({ seleccionadas, onToggle }: Props) {
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={styles.contenedor}
+      style={styles.scroll}
     >
       {CATEGORIAS.map((categoria) => {
         const activa = seleccionadas.includes(categoria);
@@ -33,6 +34,8 @@ export function CategoryFilterChips({ seleccionadas, onToggle }: Props) {
             ]}
           >
             <Text
+              allowFontScaling={false}
+              maxFontSizeMultiplier={1}
               style={[
                 styles.texto,
                 activa ? styles.textoActivo : { color: colors.text },
@@ -48,21 +51,24 @@ export function CategoryFilterChips({ seleccionadas, onToggle }: Props) {
 }
 
 const styles = StyleSheet.create({
+  scroll: {
+    flexGrow: 0,
+  },
   contenedor: {
     paddingHorizontal: spacing.md,
-    gap: spacing.sm,
     paddingVertical: spacing.xs,
+    gap: spacing.xs,
   },
   chip: {
-    paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.xs,
     borderRadius: radius.pill,
     borderWidth: 1,
     borderColor: colors.border,
     backgroundColor: colors.surface,
   },
   texto: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
   },
   textoActivo: {

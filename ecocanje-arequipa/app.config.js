@@ -1,0 +1,50 @@
+module.exports = {
+  expo: {
+    name: 'EcoCanje Arequipa',
+    slug: 'ecocanje-arequipa',
+    version: '1.0.0',
+    orientation: 'portrait',
+    icon: './assets/icon.png',
+    scheme: 'ecocanje',
+    userInterfaceStyle: 'light',
+    ios: {
+      supportsTablet: true,
+      infoPlist: {
+        NSLocationWhenInUseUsageDescription:
+          'EcoCanje usa tu ubicación para mostrarte los puntos de acopio más cercanos.',
+        NSCameraUsageDescription:
+          'EcoCanje usa la cámara para adjuntar una foto opcional a tu sugerencia de punto de acopio.',
+        NSPhotoLibraryUsageDescription:
+          'EcoCanje usa tu galería para adjuntar una foto opcional a tu sugerencia de punto de acopio.',
+        LSApplicationQueriesSchemes: ['comgooglemaps'],
+      },
+    },
+    android: {
+      package: 'com.ecocanje.arequipa',
+      permissions: ['ACCESS_COARSE_LOCATION', 'ACCESS_FINE_LOCATION'],
+      adaptiveIcon: {
+        backgroundColor: '#E6F4FE',
+        foregroundImage: './assets/android-icon-foreground.png',
+        backgroundImage: './assets/android-icon-background.png',
+        monochromeImage: './assets/android-icon-monochrome.png',
+      },
+      predictiveBackGestureEnabled: false,
+    },
+    web: {
+      favicon: './assets/favicon.png',
+    },
+    plugins: [
+      'expo-router',
+      'expo-status-bar',
+      [
+        'react-native-maps',
+        {
+          androidGoogleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+        },
+      ],
+    ],
+    experiments: {
+      typedRoutes: true,
+    },
+  },
+};
